@@ -5,9 +5,12 @@ const { sequelize } = require('./models');
 
 app.use(express.json());
 
-app.use('/auth', require('./routes/auth'));
-app.use('/inventory', require('./routes/inventory'));
-app.use('/cards', require('./routes/cards'));
+// Mount all API routes under a common `/api` prefix so the frontend can
+// fetch endpoints like `/api/register` or `/api/cards` as documented in the
+// project README.
+app.use('/api', require('./routes/auth'));
+app.use('/api/inventory', require('./routes/inventory'));
+app.use('/api/cards', require('./routes/cards'));
 
 const PORT = process.env.PORT || 3000;
 
