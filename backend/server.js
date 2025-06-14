@@ -6,8 +6,10 @@ const { sequelize } = require('./models');
 const app = express();
 
 // 👇 aplicar CORS (ajusta el origen según dónde corre tu frontend)
+//   permite sobreescribir con la variable de entorno CORS_ORIGIN
+const allowedOrigin = process.env.CORS_ORIGIN || 'http://localhost:5173';
 app.use(cors({
-  origin: 'http://localhost:5173', // frontend (Vite)
+  origin: allowedOrigin,
   credentials: true                // si usas cookies o JWT en headers
 }));
 

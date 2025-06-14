@@ -14,6 +14,10 @@ This repository contains a basic frontend built with React and TailwindCSS.
    npm run dev
    ```
 
+The backend uses CORS and expects the frontend to run on `http://localhost:5173` by default.
+If your frontend runs on a different origin, set the `CORS_ORIGIN` variable in the backend
+`.env` file accordingly.
+
 The SPA expects a backend with the following endpoints:
 - `POST /api/login`
 - `POST /api/register`
