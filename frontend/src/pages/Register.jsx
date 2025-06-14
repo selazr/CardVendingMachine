@@ -5,14 +5,14 @@ import { useAuth } from '../context/AuthContext';
 export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await register(email, password);
+      await register(username, password);
       navigate('/dashboard');
     } catch (err) {
       setError(err.message);
@@ -25,11 +25,11 @@ export default function Register() {
         <h1 className="text-2xl mb-4">Register</h1>
         {error && <p className="text-red-500">{error}</p>}
         <input
-          type="email"
-          placeholder="Email"
+          type="text"
+          placeholder="Username"
           className="border p-2 w-full mb-2"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
+          value={username}
+          onChange={e => setUsername(e.target.value)}
         />
         <input
           type="password"
