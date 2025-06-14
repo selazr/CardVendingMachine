@@ -6,6 +6,8 @@ import StatsPanel from '../components/StatsPanel';
 
 const conditions = ['All', 'Near Mint', 'Excellent', 'Good', 'Played'];
 const grades = ['All', 'PSA 10', 'PSA 9', 'PSA 8', 'Ungraded'];
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
@@ -17,7 +19,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     const fetchCards = async () => {
-      const res = await fetch('/api/cards', {
+      const res = await fetch(`${API_URL}/api/cards`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       const data = await res.json();

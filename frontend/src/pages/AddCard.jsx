@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
+
 const conditions = ['Near Mint', 'Excellent', 'Good', 'Played'];
 const grades = ['PSA 10', 'PSA 9', 'PSA 8', 'Ungraded'];
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function AddCard() {
   const { user } = useAuth();
@@ -18,7 +20,7 @@ export default function AddCard() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/cards', {
+      const res = await fetch(`${API_URL}/api/cards`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
